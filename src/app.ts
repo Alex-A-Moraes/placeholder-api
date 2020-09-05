@@ -1,9 +1,13 @@
-import * as express from "express";
+import * as fs from "fs";
+import * as path from "path";
+import express from "express";
 import * as bodyParser from "body-parser";
-import * as helmet from "helmet";
-import * as morgan from "morgan";
+import helmet from "helmet";
+import morgan from "morgan";
 import UsersRoute from "./api/users.route";
 import DateBase from "./config/db.config";
+import swaggerUi from "swagger-ui-express";
+import * as swaggerDocument from "./swagger.json";
 
 class App {
   public app: express.Application;
@@ -15,12 +19,16 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
     this.app.use(
-      morgan(
-        ":date[iso] :method :url :status :response-time ms - :res[content-length]"
-      )
+      morgan("common", {
+        stream: fs.createWriteStream(path.join(__dirname, "../log.txt"), {
+          flags: "a",
+        }),
+      })
     );
 
     this.app.use("/api", UsersRoute);
+
+    this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     this.app.route("/service/status").get((_req, res) => {
       res.json({

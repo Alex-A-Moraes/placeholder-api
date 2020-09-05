@@ -1,4 +1,5 @@
 import DateBase from "../config/db.config";
+import LogSystem from "../log/LogSystem";
 
 class UsersRepository {
   private database: DateBase;
@@ -9,6 +10,7 @@ class UsersRepository {
   public insertData(personal, address, contact) {
     this.database.connection.beginTransaction((err) => {
       if (err) {
+        LogSystem.Error(err);
         throw err;
       }
       this.database.connection.query(
@@ -16,6 +18,7 @@ class UsersRepository {
         personal,
         (err, result) => {
           if (err) {
+            LogSystem.Error(err);
             this.database.connection.rollback(() => {
               throw err;
             });
@@ -30,6 +33,7 @@ class UsersRepository {
             address,
             (err, result) => {
               if (err) {
+                LogSystem.Error(err);
                 this.database.connection.rollback(() => {
                   throw err;
                 });
@@ -40,6 +44,7 @@ class UsersRepository {
                 (err, result) => {
                   this.database.connection.commit((err) => {
                     if (err) {
+                      LogSystem.Error(err);
                       this.database.connection.rollback(() => {
                         throw err;
                       });

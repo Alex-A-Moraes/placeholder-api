@@ -1,4 +1,5 @@
 import * as mysql from "mysql";
+import LogSystem from "../log/LogSystem";
 
 class DataBase {
   public connection: mysql.Connection;
@@ -13,13 +14,17 @@ class DataBase {
   }
 
   createConnection() {
-    this.connection.connect();
+    this.connection.connect(() => {
+      LogSystem.Info(
+        `Mysql foi conectado no: ${this.connection.config.database}`
+      );
+    });
     this.createDB();
   }
 
   closeConnection(message: string, callback: any) {
     this.connection.end(() => {
-      console.log("Mysql foi desconectado pelo: " + message);
+      LogSystem.Info(`Mysql foi desconectado pelo: ${message}`);
       callback();
     });
   }

@@ -1,8 +1,13 @@
+import LogSystem from "../log/LogSystem";
+
 class UsersBusiness {
   private data: any;
 
   constructor(data: any) {
-    if (!data || data.length < 1) throw new Error("Erro: Objeto vazio!");
+    if (!data || data.length < 1) {
+      LogSystem.Error("Erro: Objeto vazio!");
+      throw new Error("Erro: Objeto vazio!");
+    }
     this.data = data;
   }
 

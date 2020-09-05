@@ -1,8 +1,9 @@
 import client from "../util/client";
 import UsersRepository from "../repository/users.repository";
-import UsersBusiness from "../modulo/users.business";
+import UsersBusiness from "../business/users.business";
 import { Request, Response } from "express";
 import * as httpStatus from "http-status";
+import LogSystem from "../log/LogSystem";
 
 const sendResponse = (res: any, statusCode: any, data: any) => {
   res.status(statusCode).json(data);
@@ -14,7 +15,10 @@ class UsersController {
       const result = await client.get(`${process.env.URL_PLACEHOLDER}/users`);
       sendResponse(res, httpStatus.OK, result);
     } catch (error) {
-      sendResponse(res, 500, error);
+      LogSystem.Error(error);
+      sendResponse(res, 500, {
+        msgError: "Serviço temporariamente indisponível!",
+      });
     }
   }
 
@@ -34,7 +38,10 @@ class UsersController {
 
       sendResponse(res, httpStatus.OK, { success: true });
     } catch (error) {
-      sendResponse(res, 500, error);
+      LogSystem.Error(error);
+      sendResponse(res, 500, {
+        msgError: "Serviço temporariamente indisponível!",
+      });
     }
   }
 }

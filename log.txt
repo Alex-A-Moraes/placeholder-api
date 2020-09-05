@@ -1,0 +1,39 @@
+Info ["Data/Hora:" 2020-09-05T21:04:02.561Z[ Mysql foi conectado no: my_db 
+Info ["Data/Hora:" 2020-09-05T21:04:31.791Z] Mysql foi conectado no: my_db 
+::1 - - [05/Sep/2020:21:04:53 +0000] "GET /api/baixar-dados HTTP/1.1" 200 4094
+Info [2020-09-05T21:05:43.303Z] Mysql foi conectado no: my_db 
+Info [2020-09-05T21:08:22.145Z] Mysql foi conectado no: my_db 
+Info [2020-09-05T21:38:30.302Z] Mysql foi conectado no: my_db 
+::1 - - [05/Sep/2020:21:39:11 +0000] "GET /service/satus HTTP/1.1" 404 152
+::1 - - [05/Sep/2020:21:39:16 +0000] "GET /service/satus HTTP/1.1" 404 152
+::1 - - [05/Sep/2020:21:39:30 +0000] "GET /service/satus HTTP/1.1" 404 152
+::1 - - [05/Sep/2020:21:39:48 +0000] "GET /service/satus HTTP/1.1" 404 152
+::1 - - [05/Sep/2020:21:40:12 +0000] "GET /service/status HTTP/1.1" 200 50
+::1 - - [05/Sep/2020:21:40:12 +0000] "GET /favicon.ico HTTP/1.1" 404 150
+::1 - - [05/Sep/2020:21:40:32 +0000] "GET /swegger HTTP/1.1" 404 146
+::1 - - [05/Sep/2020:21:40:40 +0000] "GET /swagger HTTP/1.1" 301 181
+::1 - - [05/Sep/2020:21:40:40 +0000] "GET /swagger/ HTTP/1.1" 200 3104
+::1 - - [05/Sep/2020:21:40:40 +0000] "GET /swagger/swagger-ui.css HTTP/1.1" 200 142933
+::1 - - [05/Sep/2020:21:40:40 +0000] "GET /swagger/swagger-ui-bundle.js HTTP/1.1" 200 986342
+::1 - - [05/Sep/2020:21:40:40 +0000] "GET /swagger/swagger-ui-init.js HTTP/1.1" 200 1715
+::1 - - [05/Sep/2020:21:40:40 +0000] "GET /swagger/swagger-ui-standalone-preset.js HTTP/1.1" 200 311804
+::1 - - [05/Sep/2020:21:40:41 +0000] "GET /swagger/favicon-32x32.png HTTP/1.1" 200 628
+Info [2020-09-05T21:41:13.758Z] Mysql foi conectado no: my_db 
+::ffff:127.0.0.1 - - [05/Sep/2020:21:41:13 +0000] "GET /swagger/ HTTP/1.1" 304 -
+::ffff:127.0.0.1 - - [05/Sep/2020:21:41:13 +0000] "GET /swagger/swagger-ui.css HTTP/1.1" 304 -
+::ffff:127.0.0.1 - - [05/Sep/2020:21:41:13 +0000] "GET /swagger/swagger-ui-bundle.js HTTP/1.1" 304 -
+::1 - - [05/Sep/2020:21:41:13 +0000] "GET /swagger/swagger-ui-standalone-preset.js HTTP/1.1" 304 -
+::ffff:127.0.0.1 - - [05/Sep/2020:21:41:13 +0000] "GET /swagger/swagger-ui-init.js HTTP/1.1" 200 1715
+::ffff:127.0.0.1 - - [05/Sep/2020:21:41:14 +0000] "GET /swagger/favicon-32x32.png HTTP/1.1" 200 628
+Info [2020-09-05T21:47:26.501Z] Mysql foi conectado no: my_db 
+Info [2020-09-05T21:48:51.613Z] Mysql foi conectado no: my_db 
+Info [2020-09-05T21:50:15.106Z] Mysql foi conectado no: my_db 
+Info [2020-09-05T21:54:53.441Z] Mysql foi conectado no: my_db 
+Info [2020-09-05T21:54:58.637Z] Mysql foi conectado no: my_db 
+::1 - - [05/Sep/2020:21:55:07 +0000] "GET /swagger/ HTTP/1.1" 304 -
+::1 - - [05/Sep/2020:21:55:07 +0000] "GET /swagger/swagger-ui-init.js HTTP/1.1" 200 5735
+::1 - - [05/Sep/2020:21:55:07 +0000] "GET /swagger/swagger-ui-bundle.js HTTP/1.1" 304 -
+::1 - - [05/Sep/2020:21:55:07 +0000] "GET /swagger/swagger-ui-standalone-preset.js HTTP/1.1" 304 -
+::1 - - [05/Sep/2020:21:55:07 +0000] "GET /swagger/swagger-ui.css HTTP/1.1" 304 -
+::1 - - [05/Sep/2020:21:55:08 +0000] "GET /swagger/favicon-32x32.png HTTP/1.1" 200 628
+Info [2020-09-05T21:55:38.001Z] Mysql foi conectado no: my_db 

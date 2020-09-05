@@ -8,6 +8,10 @@ class UsersRoute {
     this.router.get("/baixar-dados", UsersController.getAll);
     this.router.post("/salvar-dados", UsersController.insertAll);
   }
+
+  get() {
+    return this.router;
+  }
 }
 
-export default new UsersRoute().router;
+export default new UsersRoute().get();

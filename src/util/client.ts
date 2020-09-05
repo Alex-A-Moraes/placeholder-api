@@ -1,4 +1,5 @@
-import * as request from "request";
+import request from "request";
+import LogSystem from "../log/LogSystem";
 
 class Client {
   get(url) {
@@ -32,6 +33,7 @@ class Client {
           return resolve(responseBody);
         });
       } catch (error) {
+        LogSystem.Error(error);
         reject(error);
       }
     });
