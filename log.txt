@@ -178,3 +178,12 @@ Erro [2020-09-06T20:41:19.244Z] Erro: Objeto vazio!
 Erro [2020-09-06T20:41:19.244Z] {} 
 ::ffff:127.0.0.1 - - [06/Sep/2020:20:41:19 +0000] "GET /api/baixar-dados HTTP/1.1" 200 4094
 ::ffff:127.0.0.1 - - [06/Sep/2020:20:41:19 +0000] "GET /api/baixar-dados HTTP/1.1" 200 4094
+Info [2020-09-06T20:49:45.599Z] API started: http://localhost:3001 
+Info [2020-09-06T20:49:45.609Z] Mysql foi conectado no: my_db 
+Info [2020-09-06T20:50:23.951Z] API started: http://localhost:3001 
+Info [2020-09-06T20:50:23.959Z] Mysql foi conectado no: my_db 
+::1 - - [06/Sep/2020:21:00:40 +0000] "GET /swagger/ HTTP/1.1" 304 -
+::1 - - [06/Sep/2020:21:00:40 +0000] "GET /swagger/swagger-ui.css HTTP/1.1" 304 -
+::1 - - [06/Sep/2020:21:00:40 +0000] "GET /swagger/swagger-ui-standalone-preset.js HTTP/1.1" 304 -
+::1 - - [06/Sep/2020:21:00:40 +0000] "GET /swagger/swagger-ui-init.js HTTP/1.1" 304 -
+::1 - - [06/Sep/2020:21:00:40 +0000] "GET /swagger/swagger-ui-bundle.js HTTP/1.1" 304 -
