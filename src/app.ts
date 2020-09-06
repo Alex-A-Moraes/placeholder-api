@@ -5,16 +5,25 @@ import * as bodyParser from "body-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 import UsersRoute from "./api/users.route";
-import DateBase from "./config/db.config";
+import DateBase from "./config/database.config";
 import swaggerUi from "swagger-ui-express";
 import * as swaggerDocument from "./swagger.json";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 class App {
   public app: express.Application;
-  private database: DateBase;
+  private database: DateBase = new DateBase();
 
   public constructor() {
     this.app = express();
+
+    this.middlewares();
+    this.routes();
+    this.dataBaseConnection();
+  }
+
+  middlewares() {
     this.app.use(helmet());
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
@@ -25,7 +34,9 @@ class App {
         }),
       })
     );
+  }
 
+  routes() {
     this.app.use("/api", UsersRoute);
 
     this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -37,16 +48,13 @@ class App {
         port: process.env.PORT || 3001,
       });
     });
-
-    this.database = new DateBase();
-    this.dataBaseConnection();
   }
 
   dataBaseConnection() {
     this.database.createConnection();
   }
 
-  closeDataBaseConnection(message, callback) {
+  closeDataBaseConnection(message: any, callback: any) {
     this.database.closeConnection(message, () => callback());
   }
 }

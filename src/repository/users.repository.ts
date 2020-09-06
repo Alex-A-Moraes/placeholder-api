@@ -1,5 +1,6 @@
-import DateBase from "../config/db.config";
+import DateBase from "../config/database.config";
 import LogSystem from "../log/LogSystem";
+import { throws } from "assert";
 
 class UsersRepository {
   private database: DateBase;
