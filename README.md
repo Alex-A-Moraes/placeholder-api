@@ -36,12 +36,15 @@ Acessar `http://localhost:3001/api/baixar-dados`
 ### Executar testes automatizados
 
 ```bash
-npm start
+npm run test
 ```
 
 ## Swagger
 
 Acessar `http://localhost:3001/swagger/` documentação em Swagger-UI
 
+### Conexão com o banco de dados
 
+ * Dentro do arquivo .env configure dados de conexão com banco (Host,User,Password e DB)
+ * Caso rode em Dev o aquivo é o nodemon.json na pasta settings e configure dados de conexão com banco (Host,User,Password e DB)
 
