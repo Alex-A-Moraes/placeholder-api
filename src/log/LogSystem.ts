@@ -7,17 +7,11 @@ class LogSystem {
     });
   }
 
-  public static Error(msg: any) {
-    if (typeof msg !== "string") {
-      msg = JSON.stringify(msg);
-    }
+  public static Error(msg: any) {    
     this.fileWrite(`Erro [${new Date().toISOString()}] ${msg}`);
   }
 
-  public static Info(msg: any) {
-    if (typeof msg !== "string") {
-      msg = JSON.stringify(msg);
-    }
+  public static Info(msg: any) {    
     this.fileWrite(`Info [${new Date().toISOString()}] ${msg}`);
   }
 }
