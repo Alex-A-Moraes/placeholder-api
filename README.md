@@ -52,3 +52,12 @@ No diretório raiz do projeto será gerado um arquivo log da aplicação, assim 
 
 - Dentro do arquivo .env configure dados de conexão com banco (Host,User,Password e DB)
 - Caso rode em Dev o aquivo é o nodemon.json na pasta settings e configure dados de conexão com banco (Host,User,Password e DB)
+
+
+```conectar mysql server
+    mysql -h localhost -u root -p
+```
+
+```criar banco de dados
+    CREATE DATABASE IF NOT EXISTS my_db; USE my_db;
+```
