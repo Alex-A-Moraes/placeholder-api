@@ -9,56 +9,59 @@ class UsersRepository {
   }
 
   public insertData(personal, address, contact) {
-    this.database.connection.beginTransaction((err) => {
-      if (err) {
-        LogSystem.Error(err);
-        throw err;
-      }
-      this.database.connection.query(
-        "INSERT INTO DadosPessoais (name,username) VALUES (?,?)",
-        personal,
-        (err, result) => {
-          if (err) {
-            LogSystem.Error(err);
-            this.database.connection.rollback(() => {
-              throw err;
-            });
-          }
-
-          let pessoaId = result.insertId;
-          address.unshift(pessoaId);
-          contact.unshift(pessoaId);
-
-          this.database.connection.query(
-            "INSERT INTO DadosEndereco (pessoaId,street,suite,city,zipcode,lat,lng) VALUES (?,?,?,?,?,?,?)",
-            address,
-            (err, result) => {
-              if (err) {
-                LogSystem.Error(err);
-                this.database.connection.rollback(() => {
-                  throw err;
-                });
-              }
-              this.database.connection.query(
-                "INSERT INTO DadosContato (pessoaId,email,phone,website,companybs,companycatchPhrase,companyname) VALUES (?,?,?,?,?,?,?)",
-                contact,
-                (err, result) => {
-                  this.database.connection.commit((err) => {
-                    if (err) {
-                      LogSystem.Error(err);
-                      this.database.connection.rollback(() => {
-                        throw err;
-                      });
-                    }
-                  });
+        return new Promise((resolve, reject) => {
+            this.database.connection.beginTransaction((err) => {
+                if (err) {
+                    LogSystem.Error(`${err}`);
+                    return reject(err);
                 }
-              );
-            }
-          );
-        }
-      );
-    });
-  }
+                this.database.connection.query(
+                    'INSERT INTO DadosPessoais (name,username) VALUES (?,?)',
+                    personal,
+                    (err, result) => {
+                        if (err) {
+                            LogSystem.Error(`${err}`);
+                            this.database.connection.rollback(() => {
+                                return reject(err);
+                            });
+                        }
+
+                        let pessoaId = result.insertId;
+                        address.unshift(pessoaId);
+                        contact.unshift(pessoaId);
+
+                        this.database.connection.query(
+                            'INSERT INTO DadosEndereco (pessoaId,street,suite,city,zipcode,lat,lng) VALUES (?,?,?,?,?,?,?)',
+                            address,
+                            (err, result) => {
+                                if (err) {
+                                    LogSystem.Error(`${err}`);
+                                    this.database.connection.rollback(() => {
+                                        return reject(err);
+                                    });
+                                }
+                                this.database.connection.query(
+                                    'INSERT INTO DadosContato (pessoaId,email,phone,website,companybs,companycatchPhrase,companyname) VALUES (?,?,?,?,?,?,?)',
+                                    contact,
+                                    (err, result) => {
+                                        this.database.connection.commit((err) => {
+                                            if (err) {
+                                                LogSystem.Error(`${err}`);
+                                                this.database.connection.rollback(() => {
+                                                    return reject(err);
+                                                });
+                                            }
+                                            return resolve(result);
+                                        });
+                                    },
+                                );
+                            },
+                        );
+                    },
+                );
+            });
+        });
+    }
 }
 
 export default UsersRepository;
