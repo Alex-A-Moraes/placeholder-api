@@ -1,18 +1,15 @@
-import DateBase from "../config/database.config";
-import LogSystem from "../log/LogSystem";
-import { throws } from "assert";
+import DateBase from '../config/database.config';
 
 class UsersRepository {
-  private database: DateBase;
-  constructor() {
-    this.database = new DateBase();
-  }
+    private database: DateBase;
+    constructor() {
+        this.database = new DateBase();
+    }
 
-  public insertData(personal, address, contact) {
+    public insertData(personal, address, contact) {
         return new Promise((resolve, reject) => {
             this.database.connection.beginTransaction((err) => {
                 if (err) {
-                    LogSystem.Error(`${err}`);
                     return reject(err);
                 }
                 this.database.connection.query(
@@ -20,7 +17,6 @@ class UsersRepository {
                     personal,
                     (err, result) => {
                         if (err) {
-                            LogSystem.Error(`${err}`);
                             this.database.connection.rollback(() => {
                                 return reject(err);
                             });
@@ -35,7 +31,6 @@ class UsersRepository {
                             address,
                             (err, result) => {
                                 if (err) {
-                                    LogSystem.Error(`${err}`);
                                     this.database.connection.rollback(() => {
                                         return reject(err);
                                     });
@@ -46,7 +41,6 @@ class UsersRepository {
                                     (err, result) => {
                                         this.database.connection.commit((err) => {
                                             if (err) {
-                                                LogSystem.Error(`${err}`);
                                                 this.database.connection.rollback(() => {
                                                     return reject(err);
                                                 });
