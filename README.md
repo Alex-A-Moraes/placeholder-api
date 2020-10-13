@@ -1,7 +1,5 @@
 ## PlaceHolder-API
 
-https://youtu.be/Jmh0ofSEm_U
-
 > Aplicação Nodejs em TypeScript que consume dados de uma webapi e armazena no banco de dados MySQL local.
 
 ### Escopo da API
